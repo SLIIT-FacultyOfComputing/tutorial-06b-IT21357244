@@ -17,13 +17,12 @@ Using the Student.h and Student.cpp Implement the ```Student``` class
 
 ```c++
 class Student {
-  // private section
-  //    int studentId
-  //    name <- 20 charcters
-  
-  // public section
-  //    assignDetails() method declaration
-  //    display() method declaration
+  private:   // private section
+    int studentId;   //    int studentId
+    char name[20];   //    name <- 20 charcters
+  public:   // public section
+    void assignDetails( int stdId, char stdName[20] );   //    assignDetails() method declaration
+    void display();   //    display() method declaration
 }
 
 ```
@@ -35,12 +34,13 @@ class Student {
 
 // Assign studentId and name
 Student::assignDetails() {
-  
+  studentId = stdId;
+  strcpy( name, stdName )
 }
 
 // Display StudentId and Name
 Student::display() {
-  
+  std::cout << "Student ID : " << studentId << "\nStudent Name : " << name << endl;
 }
 ```
 ### In Excercise01.cpp
@@ -60,8 +60,10 @@ class Box {
        int width;
        int height;
     public:
-       // write prototypes of setters for length, width and height
-       // write prototypes of getters for length, width and height 
+      void setMeasuremnts( int len, int wid, int hei ); // write prototypes of setters for length, width and height
+      int getLength();
+      int getWidth();
+      int getHeight();// write prototypes of getters for length, width and height 
     int calcVolume();
 };
 ```
@@ -73,9 +75,25 @@ class Box {
 #include "Box.h"
 
 // Implement setters and getters
+void Box::setMeasuremnts( int len, int wid, int hei ) {
+  length = len;
+  width = wid;
+  heigth = hei;
+}
+
+int Box::getLength() {
+  return length;
+}
+int Box::getWidth() {
+  return width;
+}
+int Box::getHeight() {
+  return height;
+}
 
 // Implmenet the calcVolume() unction
 int Box::calcVolume() {
+  return length * width * height;
 }
 ```
 
@@ -83,4 +101,15 @@ int Box::calcVolume() {
 1.	Create a ```Box``` type object called box1
 2.	Assign the keyboard input of ```length```, ```width``` and ```height``` to the box1 object using setters
 3.	Do not change any other coding in the Exercise02.cpp
+
+#include <iostream>
+#include <iomanip>
+#include "Box.h"
+using namespace std;
+
+int main() {
+  Box box1;
+
+  box1.setMeasuremnts( 10, 10, 10 );
+}
 
